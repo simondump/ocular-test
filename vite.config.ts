@@ -24,13 +24,6 @@ export default defineConfig({
   define: {
     'import.meta.env.OCULAR_BUILD_TIMESTAMP': Date.now()
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern'
-      }
-    }
-  },
   resolve: {
     alias: {
       '@styles': '/src/styles'
@@ -53,7 +46,7 @@ export default defineConfig({
       manifest: {
         name: 'Ocular',
         short_name: 'Ocular',
-        start_url: './',
+        start_url: '/ocular/demo',
         display: 'standalone',
         orientation: 'any',
         background_color: '#fff',
@@ -61,41 +54,41 @@ export default defineConfig({
         description: 'Budgeting app',
         icons: [
           {
-            src: './images/icon-maskable-192x192.png',
+            src: '/ocular/demo/images/icon-maskable-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: './images/icon-maskable-256x256.png',
+            src: '/ocular/demo/images/icon-maskable-256x256.png',
             sizes: '256x256',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: './images/icon-maskable-512x512.png',
+            src: '/ocular/demo/images/icon-maskable-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: './images/icon-maskable-1024x1024.png',
+            src: '/ocular/demo/images/icon-maskable-1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: './images/icon-192x192.png',
+            src: '/ocular/demo/images/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: './images/icon-512x512.png',
+            src: '/ocular/demo/images/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: './images/icon-1024x1024.png',
+            src: '/ocular/demo/images/icon-1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png'
           }
