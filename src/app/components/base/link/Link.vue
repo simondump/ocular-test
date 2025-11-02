@@ -51,7 +51,7 @@ const styles = useCssModule();
 const router = useRouter();
 const theme = useThemeStyles(() =>
   typeof props.color === 'function'
-    ? props.color(router.currentRoute.value.name === props.name)
+    ? props.color(router.currentRoute.value.name === props.to)
     : (props.color ?? 'primary')
 );
 
