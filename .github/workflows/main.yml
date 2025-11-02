@@ -58,14 +58,16 @@ jobs:
       - name: Build docs
         run: pnpm docs:build
 
-#      - name: Run unit tests
-#        run: pnpm test
-#
-#      - name: Install playwright browsers
-#        run: pnpm exec playwright install --with-deps firefox
+      - name: Run unit tests
+        run: pnpm test
 
-#      - name: Run e2e tests
-#        run: pnpm test:e2e
+      - name: Install playwright browsers
+        run: pnpm exec playwright install --with-deps firefox
+        env:
+          OCULAR_BASE_URL: /ocular/demo
+
+      - name: Run e2e tests
+        run: pnpm test:e2e
 
       - name: Upload app build
         uses: actions/upload-artifact@v4
@@ -83,13 +85,13 @@ jobs:
           path: docs/.vitepress/dist
           retention-days: 1
 
-#      - name: Upload test results
-#        uses: actions/upload-artifact@v4
-#        if: ${{ failure() }}
-#        with:
-#          name: test-results
-#          path: test-results/
-#          retention-days: 7
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: ${{ failure() }}
+        with:
+          name: test-results
+          path: test-results/
+          retention-days: 7
 
   publish_docs:
     if: github.ref == 'refs/heads/main'
@@ -118,12 +120,9 @@ jobs:
 
       - name: Prepare static files
         run: |
-          ls -la
           mkdir -p pages/demo
           mv docs-build/* pages/
           mv app-build/* pages/demo
-          ls -la pages
-          ls -la pages/demo
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3

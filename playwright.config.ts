@@ -3,7 +3,9 @@ import { config } from 'dotenv';
 
 config({ quiet: true });
 
-export default defineConfig({
+const base = process.env.OCULAR_BASE_URL ?? '/';
+
+export defaulta defineConfig({
   testDir: './test',
   outputDir: './test-results',
   fullyParallel: true,
@@ -26,7 +28,7 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI
   },
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: `http://localhost:3000${base}`,
     video: 'retain-on-failure'
   }
 });
