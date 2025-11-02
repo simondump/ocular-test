@@ -95,6 +95,13 @@ jobs:
     name: Publish docs
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Download docs build
         uses: actions/download-artifact@v4
@@ -117,13 +124,11 @@ jobs:
           ls -la pages
           ls -la pages/demo
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: github-pages
+          name: github-pages
+          path: pages
 
       - name: Deploy to GitHub Pages
         id: deployment
