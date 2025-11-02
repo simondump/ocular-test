@@ -100,11 +100,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: docs-build
+          path: docs-build
 
       - name: Download app build
         uses: actions/download-artifact@v4
         with:
           name: app-build
+          path: app-build
 
       - name: Prepare static files
         run: |
