@@ -8,7 +8,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   envPrefix: ['OCULAR'],
-  base: '',
+  base: './',
   server: {
     port: 3000,
     proxy: {
@@ -61,41 +61,41 @@ export default defineConfig({
         description: 'Budgeting app',
         icons: [
           {
-            src: '/images/icon-maskable-192x192.png',
+            src: './images/icon-maskable-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/images/icon-maskable-256x256.png',
+            src: './images/icon-maskable-256x256.png',
             sizes: '256x256',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/images/icon-maskable-512x512.png',
+            src: './images/icon-maskable-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/images/icon-maskable-1024x1024.png',
+            src: './images/icon-maskable-1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/images/icon-192x192.png',
+            src: './images/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/images/icon-512x512.png',
+            src: './images/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: '/images/icon-1024x1024.png',
+            src: './images/icon-1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png'
           }
