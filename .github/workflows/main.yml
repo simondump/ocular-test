@@ -51,9 +51,9 @@ jobs:
       - name: Build app
         run: pnpm build
         env:
-          OCULAR_BASE_URL: /ocular/demo
           OCULAR_BUILD_VERSION: nightly
           OCULAR_BUILD_SHA: ${{ github.sha }}
+          OCULAR_BASE_URL: /ocular/demo
 
       - name: Build docs
         run: pnpm docs:build
@@ -63,11 +63,11 @@ jobs:
 
       - name: Install playwright browsers
         run: pnpm exec playwright install --with-deps firefox
-        env:
-          OCULAR_BASE_URL: /ocular/demo
 
       - name: Run e2e tests
         run: pnpm test:e2e
+        env:
+          OCULAR_BASE_URL: /ocular/demo
 
       - name: Upload app build
         uses: actions/upload-artifact@v4
