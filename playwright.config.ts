@@ -3,8 +3,6 @@ import { config } from 'dotenv';
 
 config({ quiet: true });
 
-const base = process.env.OCULAR_BASE_URL ?? '/';
-
 export default defineConfig({
   testDir: './test',
   outputDir: './test-results',
@@ -23,12 +21,12 @@ export default defineConfig({
   ],
   webServer: {
     command: 'pnpm preview',
-    url: `http://localhost:3000${base}`,
+    url: 'http://localhost:3000',
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI
   },
   use: {
-    baseURL: `http://localhost:3000${base}`,
+    baseURL: 'http://localhost:3000',
     video: 'retain-on-failure'
   }
 });
