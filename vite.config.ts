@@ -8,6 +8,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   envPrefix: ['OCULAR'],
+  base: '',
   server: {
     port: 3000,
     proxy: {
