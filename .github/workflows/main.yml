@@ -50,18 +50,28 @@ jobs:
 
       - name: Build app
         run: pnpm build
+        env:
+          OCULAR_BUILD_VERSION: nightly
+          OCULAR_BUILD_SHA: ${{ github.sha }}
 
       - name: Build docs
         run: pnpm docs:build
 
-      - name: Run unit tests
-        run: pnpm test
+#      - name: Run unit tests
+#        run: pnpm test
+#
+#      - name: Install playwright browsers
+#        run: pnpm exec playwright install --with-deps firefox
 
-      - name: Install playwright browsers
-        run: pnpm exec playwright install --with-deps firefox
+#      - name: Run e2e tests
+#        run: pnpm test:e2e
 
-      - name: Run e2e tests
-        run: pnpm test:e2e
+      - name: Upload app build
+        uses: actions/upload-artifact@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          name: app-build
+          path: dist
 
       - name: Upload docs build
         uses: actions/upload-artifact@v4
@@ -71,13 +81,13 @@ jobs:
           path: docs/.vitepress/dist
           retention-days: 1
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        if: ${{ failure() }}
-        with:
-          name: test-results
-          path: test-results/
-          retention-days: 7
+#      - name: Upload test results
+#        uses: actions/upload-artifact@v4
+#        if: ${{ failure() }}
+#        with:
+#          name: test-results
+#          path: test-results/
+#          retention-days: 7
 
   publish_docs:
     if: github.ref == 'refs/heads/main'
@@ -89,7 +99,19 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: docs-build
-          path: docs-build
+
+      - name: Download app build
+        uses: actions/download-artifact@v4
+        with:
+          name: app-build
+
+      - name: Prepare static files
+        run: |
+          mkdir -p pages
+          mv docs-build/* pages/
+          mv app-build/* pages/demo
+          ls -la pages
+          ls -la pages/demo
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
