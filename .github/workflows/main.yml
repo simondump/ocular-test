@@ -72,6 +72,7 @@ jobs:
         with:
           name: app-build
           path: dist
+          retention-days: 1
 
       - name: Upload docs build
         uses: actions/upload-artifact@v4
@@ -107,6 +108,7 @@ jobs:
 
       - name: Prepare static files
         run: |
+          ls -la
           mkdir -p pages
           mv docs-build/* pages/
           mv app-build/* pages/demo
