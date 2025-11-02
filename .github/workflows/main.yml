@@ -51,6 +51,7 @@ jobs:
       - name: Build app
         run: pnpm build
         env:
+          OCULAR_BASE_URL: /ocular/demo
           OCULAR_BUILD_VERSION: nightly
           OCULAR_BUILD_SHA: ${{ github.sha }}
 

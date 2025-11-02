@@ -6,9 +6,11 @@ import { VitePWA } from 'vite-plugin-pwa';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
+const base = process.env.OCULAR_BASE_URL ?? '/';
+
 export default defineConfig({
+  base,
   envPrefix: ['OCULAR'],
-  base: '/ocular/demo',
   server: {
     port: 3000,
     proxy: {
@@ -46,7 +48,7 @@ export default defineConfig({
       manifest: {
         name: 'Ocular',
         short_name: 'Ocular',
-        start_url: '/ocular/demo',
+        start_url: base,
         display: 'standalone',
         orientation: 'any',
         background_color: '#fff',
@@ -54,41 +56,41 @@ export default defineConfig({
         description: 'Budgeting app',
         icons: [
           {
-            src: '/ocular/demo/images/icon-maskable-192x192.png',
+            src: `${base}images/icon-maskable-192x192.png`,
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/ocular/demo/images/icon-maskable-256x256.png',
+            src: `${base}images/icon-maskable-256x256.png`,
             sizes: '256x256',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/ocular/demo/images/icon-maskable-512x512.png',
+            src: `${base}images/icon-maskable-512x512.png`,
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/ocular/demo/images/icon-maskable-1024x1024.png',
+            src: `${base}images/icon-maskable-1024x1024.png`,
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/ocular/demo/images/icon-192x192.png',
+            src: `${base}images/icon-192x192.png`,
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/ocular/demo/images/icon-512x512.png',
+            src: `${base}images/icon-512x512.png`,
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: '/ocular/demo/images/icon-1024x1024.png',
+            src: `${base}images/icon-1024x1024.png`,
             sizes: '1024x1024',
             type: 'image/png'
           }
