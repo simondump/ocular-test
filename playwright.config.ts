@@ -5,7 +5,7 @@ config({ quiet: true });
 
 const base = process.env.OCULAR_BASE_URL ?? '/';
 
-export defaulta defineConfig({
+export default defineConfig({
   testDir: './test',
   outputDir: './test-results',
   fullyParallel: true,
