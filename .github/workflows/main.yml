@@ -111,7 +111,7 @@ jobs:
       - name: Prepare static files
         run: |
           ls -la
-          mkdir -p pages
+          mkdir -p pages/demo
           mv docs-build/* pages/
           mv app-build/* pages/demo
           ls -la pages
