@@ -1,6 +1,6 @@
 <template>
   <a
-    v-if="to?.startsWith('http')"
+    v-if="to.startsWith('http')"
     v-tooltip="{ text: tooltip, position: tooltipPosition }"
     :href="to"
     :class="classes"
@@ -11,10 +11,10 @@
     <slot />
   </a>
   <RouterLink
-    v-else-if="name"
+    v-else
     v-tooltip="{ text: tooltip, position: tooltipPosition }"
-    :data-testid="testId ? `${testId}-${name}` : undefined"
-    :to="name"
+    :data-testid="testId ? `${testId}-${to}` : undefined"
+    :to="to"
     :class="classes"
   >
     <component :is="icon" v-if="icon" :class="$style.icon" />
@@ -38,8 +38,7 @@ const props = withDefaults(
     custom?: boolean;
     tooltip?: string;
     tooltipPosition?: Placement;
-    name?: string;
-    to?: string;
+    to: string;
     testId?: string;
   }>(),
   {
