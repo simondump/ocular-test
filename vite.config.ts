@@ -53,7 +53,7 @@ export default defineConfig({
       manifest: {
         name: 'Ocular',
         short_name: 'Ocular',
-        start_url: '/',
+        start_url: './',
         display: 'standalone',
         orientation: 'any',
         background_color: '#fff',
