@@ -1,8 +1,8 @@
 <template>
   <a
-    v-if="isExternalLink"
+    v-if="to?.startsWith('http')"
     v-tooltip="{ text: tooltip, position: tooltipPosition }"
-    :href="href"
+    :href="to"
     :class="classes"
     rel="noopener,noreferrer,nofollow"
     target="_blank"
@@ -11,10 +11,10 @@
     <slot />
   </a>
   <RouterLink
-    v-else
+    v-else-if="name"
     v-tooltip="{ text: tooltip, position: tooltipPosition }"
     :data-testid="testId ? `${testId}-${name}` : undefined"
-    :to="href"
+    :to="name"
     :class="classes"
   >
     <component :is="icon" v-if="icon" :class="$style.icon" />
@@ -55,9 +55,6 @@ const theme = useThemeStyles(() =>
     ? props.color(router.currentRoute.value.name === props.name)
     : (props.color ?? 'primary')
 );
-
-const href = computed(() => (props.name ? router.resolve({ name: props.name }).href : (props.to ?? '')));
-const isExternalLink = computed(() => href.value.startsWith('http'));
 
 const classes = computed(() => [
   props.class,
